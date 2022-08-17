@@ -1,0 +1,46 @@
+import React, { useEffect, useState } from "react";
+
+function ShowUser() {
+  const [dt, setdt] = useState([]);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("register"));
+    console.log("myyyyyddddddddddd", data);
+    setdt(data);
+  }, []);
+
+  return (
+    <>
+      <div style={{ backgroundColor: "orange" }}>
+        <h1>ShowUser Table</h1>
+        <table className="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dt
+              ? dt.map((elem, i) => {
+                  return (
+                    <>
+                      <tr>
+                        <th scope="row">{i + 1}</th>
+                        <td>{elem.name}</td>
+                        <td>{elem.email}</td>
+                        <td>{elem.adress}</td>
+                      </tr>
+                    </>
+                  );
+                })
+              : "no data"}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+export default ShowUser;
