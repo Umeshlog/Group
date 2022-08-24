@@ -13,12 +13,9 @@ function App() {
         <Route path='/' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-
       </Routes>
     </BrowserRouter>
-    
     </div>
   );
 }
-
 export default App;

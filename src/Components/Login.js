@@ -3,7 +3,21 @@ import { useForm } from "react-hook-form";
 import { Modal, Button, NumberInput, TextInput } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Login = () => {
+  const navigate=useNavigate()
+  const list = JSON.parse(localStorage.getItem("register"));
+
+  
+  const newList=list.map((user)=>{
+    return user.name
+  })
+
+
+  console.log(111,list)
+
+  
   const {
     register,
     handleSubmit,
@@ -11,9 +25,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate=useNavigate()
-
-  
+ 
 
 const onSubmit = (data) =>{
     navigate('/dashboard')
@@ -70,6 +82,7 @@ const onSubmit = (data) =>{
                       },
                     })}
                   />
+
                   {errors.password && (
                     <p style={{ color: "red" }} className="error">
                       {errors.password.message}
