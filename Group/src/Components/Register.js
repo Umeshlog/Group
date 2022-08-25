@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { motion } from "framer-motion";
-
+import { Modal, Button, NumberInput, TextInput } from "@mantine/core";
 const getItem = () => {
   const list = localStorage.getItem("register");
+
   if (list) {
     return JSON.parse(list);
   } else {
@@ -13,6 +13,7 @@ const getItem = () => {
 
 const RegisterPage = () => {
   const [dt, setdt] = useState();
+
   const [val, setVal] = useState(getItem());
 
   const {
@@ -22,25 +23,22 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
 
-  
   const onSubmit = (data) => {
     const list = JSON.parse(localStorage.getItem("register"));
     console.log(list);
+
     val.push(data);
+
     localStorage.setItem("register", JSON.stringify(val));
+
     console.log(val);
+
     reset();
   };
-
-
   return (
     <>
       <div className="arpit">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="container a"
-        >
+        <div className="container a">
           <div className="col-sm-6">
             <div
               className="container "
@@ -51,7 +49,7 @@ const RegisterPage = () => {
               }}
             >
               <form onSubmit={handleSubmit(onSubmit)}>
-                <h1 style={{ color: "blue" }}>Signup form</h1>
+                <h1>Signup form</h1>
 
                 <TextInput
                   style={{ fontWeight: "bold" }}
@@ -136,7 +134,7 @@ const RegisterPage = () => {
               </form>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </>
   );
