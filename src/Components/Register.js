@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Modal, Button, NumberInput, TextInput } from "@mantine/core";
+import { motion } from "framer-motion";
 const getItem = () => {
   const list = localStorage.getItem("register");
 
@@ -38,7 +39,11 @@ const RegisterPage = () => {
   return (
     <>
       <div className="arpit">
-        <div className="container a">
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="container a"
+        >
           <div className="col-sm-6">
             <div
               className="container "
@@ -49,7 +54,7 @@ const RegisterPage = () => {
               }}
             >
               <form onSubmit={handleSubmit(onSubmit)}>
-                <h1>Signup form</h1>
+                <h1 style={{ color: "blue" }}>Signup form</h1>
 
                 <TextInput
                   style={{ fontWeight: "bold" }}
@@ -134,7 +139,7 @@ const RegisterPage = () => {
               </form>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );
