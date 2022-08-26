@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-
+import {Button} from "@mantine/core"
+import {TextInput} from "@mantine/form"
 const getItem = () => {
   const list = localStorage.getItem("register");
   if (list) {
